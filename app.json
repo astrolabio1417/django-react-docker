@@ -48,10 +48,5 @@
       },
       "as": "DATABASE"
     }
-  ],
-  "buildpacks": [
-    {
-      "url": "heroku/python"
-    }
   ]
 }
