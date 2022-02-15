@@ -1,0 +1,26 @@
+
+FROM node:17-alpine as frontbuilder
+
+WORKDIR /build
+COPY frontend/package.json frontend/yarn.lock /build/
+RUN yarn install --frozen-lockfile
+COPY frontend .
+RUN yarn run build
+
+FROM python:3.10-alpine
+
+WORKDIR /usr/src/backend
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
+
+COPY ./backend .
+COPY --from=frontbuilder /build/dist /usr/src/backend/dist
+
+RUN pip install --upgrade pip \
+    && pip install -r requirements.txt \
+    && sed -i 's/\r$//g' /usr/src/backend/entrypoint.sh \
+    && chmod +x /usr/src/backend/entrypoint.sh
+    
+ENTRYPOINT ["/usr/src/backend/entrypoint.sh"]
+# EXPOSE 8000
+CMD gunicorn backend.asgi:application -b 0.0.0.0:${port} -k uvicorn.workers.UvicornWorker

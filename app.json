@@ -32,7 +32,11 @@
     "POSTGRES_PASSWORD": { "value": "password" },
     "POSTGRES_DB": { "value": "mydatabase" },
     "POSTGRES_PORT": { "value": "5432" },
-    "POSTGRES_HOST": { "value": "postgres" }
+    "POSTGRES_HOST": { "value": "postgres" },
+    "VITE_BACKEND_HOST": {
+      "description": "api ip address",
+      "value": ""
+    }
   },
   "formation": {
     "web": {
@@ -40,18 +44,6 @@
       "size": "free"
     }
   },
-  "addons": [
-    {
-      "plan": "heroku-postgresql:hobby-dev",
-      "options": {
-        "version": "13"
-      },
-      "as": "DATABASE"
-    }
-  ],
-  "buildpacks": [
-    {
-      "url": "https://github.com/negativetwelve/heroku-buildpack-subdir"
-    }
-  ]
+  "addons": ["heroku-postgresql:hobby-dev"],
+  "stack": "container"
 }
