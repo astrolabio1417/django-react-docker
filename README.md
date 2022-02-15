@@ -1,3 +1,3 @@
-# DJANGO + DRF | Vite + React + Typescript + Eslint + Prettier
+# Django + DRF + Postgresql | Vite + React + Typescript + Eslint + Prettier
 
 Sample

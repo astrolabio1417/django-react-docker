@@ -1,1 +1,1 @@
-# Django + Djangorestframework
+# Django + Djangorestframework + Postgresql

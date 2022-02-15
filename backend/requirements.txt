@@ -2,3 +2,4 @@ django
 django-cors-headers
 djangorestframework
 whitenoise==5.2.0
+psycopg2-binary
