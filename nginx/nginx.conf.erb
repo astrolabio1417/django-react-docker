@@ -22,7 +22,7 @@ http {
         keepalive_timeout 300s;
         client_max_body_size 10M;
         
-        root /usr/share/nginx/html;
+        root /usr/src/backend/staticfiles;
         index index.html;
 
         location / {
@@ -54,9 +54,5 @@ http {
             proxy_set_header X-Real-IP $remote_addr;
             proxy_redirect off;
         }
-    }
-
-    upstream uvicorn {
-        server unix:/tmp/uvicorn.sock;
     }
 }

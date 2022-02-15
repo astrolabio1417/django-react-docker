@@ -2,7 +2,7 @@ FROM node:17-alpine as frontbuilder
 
 WORKDIR /build
 COPY frontend/package.json frontend/yarn.lock /build/
-RUN yarn install --frozen-lockfile --no-cache
+RUN yarn install --frozen-lockfile
 COPY frontend .
 RUN yarn run build
 
@@ -16,11 +16,12 @@ COPY ./backend .
 
 RUN pip install --upgrade pip \
     && pip install -r requirements.txt \
-    && sed -i 's/\r$//g' /usr/src/backend/entrypoint.sh \
-    && chmod +x /usr/src/backend/entrypoint.sh
+    && sed -i 's/\r$//g' /usr/src/backend/entrypoint.prod.sh \
+    && chmod +x /usr/src/backend/entrypoint.prod.sh
     
-ENTRYPOINT ["/usr/src/backend/entrypoint.sh"]
+ENTRYPOINT ["/usr/src/backend/entrypoint.prod.sh"]
 
-RUN python manage.py collectstatic
-COPY --from=frontbuilder /build/dist /usr/share/nginx/html;
-COPY /usr/src/backend/staticfiles /usr/share/nginx/html;
+COPY --from=frontbuilder /build/dist /usr/src/backend/staticfiles
+
+EXPOSE 8000
+CMD gunicorn backend.asgi:application -w 4 -k uvicorn.workers.UvicornWorker
