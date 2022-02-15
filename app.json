@@ -10,11 +10,11 @@
     },
     "BACKEND_DEBUG": {
       "description": "django debug",
-      "value": 0
+      "value": "0"
     },
     "BACKEND_ALLOWED_HOSTS": {
       "description": "One or more domain, separated by space",
-      "value": "*"
+      "value": ""
     },
     "BACKEND_CORS_ORIGINS": {
       "description": "separated by space",
@@ -44,6 +44,5 @@
       "size": "free"
     }
   },
-  "addons": ["heroku-postgresql:hobby-dev"],
   "stack": "container"
 }

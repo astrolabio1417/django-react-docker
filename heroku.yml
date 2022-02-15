@@ -1,9 +1,3 @@
 build:
   docker:
     web: DockerfileHeroku
-release:
-  image: web
-  command:
-    - ./backend/entrypoint.sh
-run:
-  web: gunicorn backend.asgi:application -b 0.0.0.0:${port} -k uvicorn.workers.UvicornWorker

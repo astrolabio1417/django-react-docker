@@ -17,10 +17,10 @@ COPY ./backend .
 # COPY --from=frontbuilder /build/dist /usr/src/backend/dist
 
 RUN pip install --upgrade pip \
-    && pip install -r requirements.txt 
-    # && sed -i 's/\r$//g' /usr/src/backend/entrypoint.sh \
-    # && chmod +x /usr/src/backend/entrypoint.sh
+    && pip install -r requirements.txt \ 
+    && sed -i 's/\r$//g' /usr/src/backend/entrypoint.sh \
+    && chmod +x /usr/src/backend/entrypoint.sh
     
-# ENTRYPOINT ["/usr/src/backend/entrypoint.sh"]
+ENTRYPOINT ["/usr/src/backend/entrypoint.sh"]
 # EXPOSE 8000
-# CMD gunicorn backend.asgi:application -b 0.0.0.0:${port} -k uvicorn.workers.UvicornWorker
+CMD gunicorn backend.asgi:application -k uvicorn.workers.UvicornWorker
