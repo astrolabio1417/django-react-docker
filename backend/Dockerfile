@@ -17,5 +17,3 @@ RUN pip install --upgrade pip \
     && chmod +x /usr/src/backend/entrypoint.sh
     
 ENTRYPOINT ["/usr/src/backend/entrypoint.sh"]
-
-RUN python manage.py collectstatic
