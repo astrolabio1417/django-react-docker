@@ -1,5 +1,8 @@
 build:
   docker:
     web: DockerfileHeroku
-run:
-  web: ./bin/start-nginx gunicorn backend.asgi:application -b 127.0.0.1:8087 -w 4 -k uvicorn.workers.UvicornWorker
+  release:
+    command:
+      - python manage.py collectstatic --no-input
+  run:
+    web: ./bin/start-nginx gunicorn backend.asgi:application -b 127.0.0.1:8087 -w 4 -k uvicorn.workers.UvicornWorker
