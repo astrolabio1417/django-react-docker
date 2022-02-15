@@ -23,4 +23,4 @@ RUN pip install --upgrade pip \
     
 ENTRYPOINT ["/usr/src/backend/entrypoint.sh"]
 # EXPOSE 8000
-CMD gunicorn backend.asgi:application -b 0.0.0.0:${port} -k uvicorn.workers.UvicornWorker
+# CMD gunicorn backend.asgi:application -b 0.0.0.0:${port} -k uvicorn.workers.UvicornWorker
