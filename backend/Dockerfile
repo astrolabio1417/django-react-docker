@@ -1,5 +1,4 @@
-FROM python:3.10-alpine as base
-FROM base as builder
+FROM python:3.10-alpine
 
 WORKDIR /usr/src/backend
 ENV PYTHONUNBUFFERED=1
@@ -18,3 +17,5 @@ RUN pip install --upgrade pip \
     && chmod +x /usr/src/backend/entrypoint.sh
     
 ENTRYPOINT ["/usr/src/backend/entrypoint.sh"]
+
+RUN python manage.py collectstatic
