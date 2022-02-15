@@ -48,5 +48,10 @@
       },
       "as": "DATABASE"
     }
+  ],
+  "buildpacks": [
+    {
+      "url": "https://github.com/negativetwelve/heroku-buildpack-subdir"
+    }
   ]
 }
