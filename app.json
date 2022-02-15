@@ -1,0 +1,60 @@
+{
+  "name": "sample",
+  "description": "sample",
+  "repository": "https://github.com/astrolabio1417/django-react-docker",
+  "logo": "https://node-js-sample.herokuapp.com/node.png",
+  "env": {
+    "BACKEND_SECRET_KEY": {
+      "description": "django secret key",
+      "value": "enter your secret"
+    },
+    "BACKEND_DEBUG": {
+      "description": "django debug",
+      "value": 0
+    },
+    "BACKEND_ALLOWED_HOSTS": {
+      "description": "One or more domain, separated by space",
+      "value": "*"
+    },
+    "BACKEND_CORS_ORIGINS": {
+      "description": "separated by space",
+      "value": ""
+    },
+    "BACKEND_CSRF_TRUSTED_ORIGIN": {
+      "description": "separated by space",
+      "value": ""
+    },
+    "DATABASE_ENGINE": {
+      "description": "django.db.backends.postgresql_psycopg2, django.db.backends.sqlite3 etc...",
+      "value": "django.db.backends.sqlite3"
+    },
+    "POSTGRES_USER": { "value": "username" },
+    "POSTGRES_PASSWORD": { "value": "password" },
+    "POSTGRES_DB": { "value": "mydatabase" },
+    "POSTGRES_PORT": { "value": "5432" },
+    "POSTGRES_HOST": { "value": "postgres" }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "addons": [
+    {
+      "plan": "heroku-postgresql:hobby-dev",
+      "options": {
+        "version": "13"
+      },
+      "as": "DATABASE"
+    }
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    },
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-nginx.git"
+    }
+  ]
+}
