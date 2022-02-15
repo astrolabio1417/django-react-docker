@@ -7,8 +7,7 @@ ENV PYTHONDONTWRITEBYTECODE=1
 
 COPY . .
 
-RUN apk update \
-    && pip install --upgrade pip \
+RUN pip install --upgrade pip \
     && pip install -r requirements.txt \
     && sed -i 's/\r$//g' /usr/src/backend/entrypoint.sh \
     && chmod +x /usr/src/backend/entrypoint.sh
