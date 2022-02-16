@@ -3,11 +3,6 @@
   "description": "sample",
   "repository": "https://github.com/astrolabio1417/django-react-docker",
   "logo": "https://node-js-sample.herokuapp.com/node.png",
-  "buildpacks": [
-    {
-      "url": "https://github.com/heroku/heroku-buildpack-nginx"
-    }
-  ],
   "env": {
     "BACKEND_SECRET_KEY": {
       "description": "django secret key",
@@ -19,7 +14,7 @@
     },
     "BACKEND_ALLOWED_HOSTS": {
       "description": "One or more domain, NO http/https/etc... separated by space! eg. appname.herokuapp.com",
-      "value": "appname.herokuapp.com"
+      "value": "appname.herokuapp.com herokuapp.com"
     },
     "BACKEND_CORS_ORIGINS": {
       "description": "One or more domain, separated by space! eg. https://appname.herokuapp.com",
