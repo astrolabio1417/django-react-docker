@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get("BACKEND_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("BACKEND_DEBUG", default=0)
 
-ALLOWED_HOSTS = os.environ.get("BACKEND_ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS = ["test.herokuapp.com"]
 SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
 
 # DRF

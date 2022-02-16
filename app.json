@@ -14,7 +14,7 @@
     },
     "BACKEND_ALLOWED_HOSTS": {
       "description": "One or more domain, NO http/https/etc... separated by space! eg. appname.herokuapp.com",
-      "value": "appname.herokuapp.com herokuapp.com"
+      "value": "appname.herokuapp.com"
     },
     "BACKEND_CORS_ORIGINS": {
       "description": "One or more domain, separated by space! eg. https://appname.herokuapp.com",
