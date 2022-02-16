@@ -1,3 +1,4 @@
 # Django + DRF + Postgresql | Vite + React + Typescript + Eslint + Prettier
 
-Sample
+- SAMPLE
+- docker, django, react, nginx, supervisord

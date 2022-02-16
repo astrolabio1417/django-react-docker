@@ -15,22 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.http import HttpResponse
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
 
-def index(request):
-    return HttpResponse("HELLO WORLD")
-
-
 @api_view(["GET"])
-def test(request):
+def message(request):
     return Response({"message": "Hello World"})
-
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", index),
-    path("message", test),
+    path("api/message", message),
 ]

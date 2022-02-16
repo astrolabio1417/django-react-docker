@@ -18,16 +18,16 @@
       "value": "0"
     },
     "BACKEND_ALLOWED_HOSTS": {
-      "description": "One or more domain, separated by space! eg. appname.herokuapp.com",
-      "value": ""
+      "description": "One or more domain, NO http/https/etc... separated by space! eg. appname.herokuapp.com",
+      "value": "appname.herokuapp.com"
     },
     "BACKEND_CORS_ORIGINS": {
       "description": "One or more domain, separated by space! eg. https://appname.herokuapp.com",
-      "value": ""
+      "value": "https://appname.herokuapp.com"
     },
     "BACKEND_CSRF_TRUSTED_ORIGIN": {
       "description": "One or more domain, separated by space! eg. https://appname.herokuapp.com",
-      "value": ""
+      "value": "https://appname.herokuapp.com"
     },
     "DATABASE_ENGINE": {
       "description": "django.db.backends.postgresql_psycopg2, django.db.backends.sqlite3 etc...",
@@ -39,8 +39,8 @@
     "POSTGRES_PORT": { "value": "5432" },
     "POSTGRES_HOST": { "value": "postgres" },
     "VITE_BACKEND_HOST": {
-      "description": "api ip address",
-      "value": ""
+      "description": "DOMAIN API URL",
+      "value": "https://appname.herokuapp.com/api"
     }
   },
   "formation": {
