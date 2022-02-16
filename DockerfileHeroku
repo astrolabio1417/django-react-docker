@@ -1,5 +1,5 @@
 FROM node:17-alpine as frontbuilder
-ENV VITE_BACKEND_HOST=http://localhost/api
+ENV VITE_BACKEND_HOST=/
 
 WORKDIR /build
 COPY frontend/package.json frontend/yarn.lock /build/
@@ -8,7 +8,19 @@ COPY frontend .
 RUN yarn run build
 
 FROM python:3.10-alpine as backend
+
 ENV BACKEND_SECRET_KEY=myrandomkey
+ENV BACKEND_DEBUG=1
+ENV BACKEND_ALLOWED_HOSTS=*
+ENV BACKEND_CORS_ORIGINS=*
+ENV BACKEND_CSRF_TRUSTED_ORIGIN=*
+ENV DATABASE_ENGINE=django.db.backends.sqlite3
+ENV POSTGRES_USER=username
+ENV POSTGRES_PASSWORD=password
+ENV POSTGRES_DB=mydatabase
+ENV POSTGRES_PORT=5432
+ENV POSTGRES_HOST=postgres
+
 
 WORKDIR /usr/src/backend
 ENV PYTHONUNBUFFERED=1
