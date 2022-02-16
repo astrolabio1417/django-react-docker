@@ -1,5 +1,5 @@
 FROM node:17-alpine as frontbuilder
-ENV VITE_BACKEND_HOST=/
+ENV VITE_BACKEND_HOST=/api
 
 WORKDIR /build
 COPY frontend/package.json frontend/yarn.lock /build/
@@ -34,18 +34,16 @@ RUN apk update \
     && pip install -r requirements.txt \
     && mkdir -p /var/log/supervisor \
     && mkdir -p /etc/supervisor/conf.d \
+    && mkdir -p /usr/src/backend/staticfiles \
     # COPY SUPERVISORD CONFIG TO SUPERVISORD PATH 
     && cp /usr/src/backend/supervisord.conf /etc/supervisord.conf \
     # NGINX REMOVE DEFAULT FILES
-    && rm /etc/nginx/nginx.conf \   
-    # BACKEND COLLECT STATIC FILES 
-    && python manage.py collectstatic --no-input \
-    # BACKEND SCRIPT
-    && sed -i 's/\r$//g' /usr/src/backend/entrypoint.sh \
-    && chmod +x /usr/src/backend/entrypoint.sh
+    && rm /etc/nginx/nginx.conf
 
 COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
-ENTRYPOINT ["/usr/src/backend/entrypoint.sh"]
+
+COPY "entrypoint.prod.sh" . 
+ENTRYPOINT ["/usr/src/backend/entrypoint.prod.sh"]
 
 COPY --from=frontbuilder /build/dist /usr/src/backend/staticfiles
 
