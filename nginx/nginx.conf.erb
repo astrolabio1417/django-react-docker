@@ -36,6 +36,9 @@ http {
 
         location /static/ {
             alias /usr/src/backend/staticfiles/;
+            access_log off;
+            expires 30d;
+            add_header Vary Accept-Encoding;
             try_files /$uri $uri =404;
         }
         
