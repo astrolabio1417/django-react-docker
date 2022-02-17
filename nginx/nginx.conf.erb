@@ -22,7 +22,7 @@ http {
     keepalive_timeout 3000;
 
     server {
-        listen 8087;
+        listen <%= ENV["PORT"] %>;
         server_name _;
         client_max_body_size 32M;
         root /usr/src/backend/staticfiles;
