@@ -28,7 +28,7 @@ ENV PYTHONDONTWRITEBYTECODE=1
 COPY ./backend .
 
 RUN apk update \
-    && apk add --no-cache nginx supervisor \
+    && apk add --no-cache nginx supervisor bash \
     && pip install --upgrade pip \
     && pip install -r requirements.txt \
     && mkdir -p /var/log/supervisor \
@@ -42,5 +42,5 @@ RUN apk update \
 COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
 COPY --from=frontbuilder /build/dist /usr/src/backend/staticfiles
 RUN chmod +x /usr/bin/supervisord
-
+EXPOSE 8000
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
