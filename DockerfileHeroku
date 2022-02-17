@@ -34,22 +34,5 @@ COPY ./nginx/nginx.conf.erb /etc/nginx/nginx.conf.erb
 COPY --from=frontbuilder /build/dist /usr/src/backend/staticfiles
 
 RUN chmod +x /usr/bin/supervisord
-ENV BACKEND_SECRET_KEY=myrandomkey
-ENV BACKEND_DEBUG=1
-
-ENV BACKEND_ALLOWED_HOSTS=localhost
-ENV BACKEND_CORS_ORIGINS=http://localhost
-ENV BACKEND_CSRF_TRUSTED_ORIGIN=http://localhost
-
-ENV DATABASE_ENGINE=django.db.backends.sqlite3
-ENV POSTGRES_USER=username
-ENV POSTGRES_PASSWORD=password
-ENV POSTGRES_DB=mydatabase
-ENV POSTGRES_PORT=5432
-ENV POSTGRES_HOST=postgres
-
-ENV PORT=80
-
-EXPOSE 80
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
