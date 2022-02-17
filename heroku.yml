@@ -1,3 +1,6 @@
 build:
   docker:
     web: DockerfileHeroku
+release:
+  command:
+    - ./usr/src/backend/entrypoint.prod.sh
