@@ -12,8 +12,6 @@ COPY . .
 # apk add chromium chromium-chromedriver 
 
 RUN pip install --upgrade pip \
-    && pip install -r requirements.txt \
-    && sed -i 's/\r$//g' /usr/src/backend/entrypoint.sh \
-    && chmod +x /usr/src/backend/entrypoint.sh
+    && pip install -r requirements.txt
     
 ENTRYPOINT ["/usr/src/backend/entrypoint.sh"]
