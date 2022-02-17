@@ -42,5 +42,4 @@ RUN apk update \
 COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
 COPY --from=frontbuilder /build/dist /usr/src/backend/staticfiles
 RUN chmod +x /usr/bin/supervisord
-EXPOSE 8000
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
