@@ -3,13 +3,15 @@ version: "1.0"
 services:
   backend:
     build: ./backend
-    command: python manage.py runserver 0.0.0.0:8000
+    command: gunicorn backend.asgi -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000
     volumes:
       - ./backend:/usr/src/backend
     ports:
       - 8000:8000
     env_file:
       - ./backend/.env.dev
+    depends_on:
+      - postgres
   frontend:
     build: ./frontend
     command: yarn run dev

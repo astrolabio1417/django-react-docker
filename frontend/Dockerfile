@@ -12,6 +12,4 @@ WORKDIR /usr/src/frontend
 COPY --from=builder /usr/build/frontend .
 COPY . .
 
-RUN sed -i 's/\r$//g' /usr/src/frontend/entrypoint.sh
-RUN chmod +x /usr/src/frontend/entrypoint.sh
 ENTRYPOINT ["/usr/src/frontend/entrypoint.sh"]
