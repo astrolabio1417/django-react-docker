@@ -4,3 +4,4 @@ build:
 release:
   command:
     - ./usr/src/backend/entrypoint.prod.sh
+  image: web
