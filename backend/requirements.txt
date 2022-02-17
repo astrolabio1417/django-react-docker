@@ -4,6 +4,5 @@ djangorestframework
 whitenoise==5.2.0
 psycopg2-binary
 gunicorn
-uvicorn
-wsproto
-websockets
+websockets==10.0
+uvicorn==0.15.0
