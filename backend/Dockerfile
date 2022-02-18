@@ -4,7 +4,7 @@ WORKDIR /usr/src/backend
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE=1
 
-COPY . .
+COPY requirements.txt .
 
 ## DJANGO CHANNELS
 # apk add --virtual .build-deps gcc musl-dev libffi-dev
