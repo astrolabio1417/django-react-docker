@@ -5,12 +5,16 @@ function App() {
 
   useEffect(() => {
     const fetcher = async () => {
-      const res = await fetch(`${import.meta.env.VITE_BACKEND_HOST}/message`)
-      if (res.ok) {
-        const data = await res.json()
-        setMessage(data.message)
-      } else {
-        setMessage('SOMETHING WENT WRONG!')
+      try {
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_HOST}/message`)
+        if (res.ok) {
+          const data = await res.json()
+          setMessage(data.message)
+        } else {
+          setMessage('SERVER ERROR')
+        }
+      } catch (e) {
+        setMessage("SERVER DOWN")
       }
     }
     fetcher()
