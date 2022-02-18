@@ -16,7 +16,7 @@ services:
     build: ./frontend
     command: yarn run dev
     volumes:
-      - ./frontend:/usr/src/frontend
+      - ./frontend:/usr/src/frontend-dev
     ports:
       - 3000:3000
     depends_on:

@@ -1,10 +1,10 @@
 
 FROM node:17-alpine
 
-WORKDIR /usr/src/frontend
+WORKDIR /usr/src/frontend-dev
 COPY . .
-RUN yarn install --frozen-lockfile
+RUN yarn install
 
-RUN sed -i 's/\r$//g' /usr/src/frontend/entrypoint.sh
-RUN chmod +x /usr/src/frontend/entrypoint.sh
-ENTRYPOINT ["/usr/src/frontend/entrypoint.sh"]
+RUN sed -i 's/\r$//g' /usr/src/frontend-dev/entrypoint.sh
+RUN chmod +x /usr/src/frontend-dev/entrypoint.sh
+ENTRYPOINT ["/usr/src/frontend-dev/entrypoint.sh"]  
