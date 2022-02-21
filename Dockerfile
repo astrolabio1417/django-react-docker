@@ -27,12 +27,29 @@ RUN apk update \
     # NGINX REMOVE DEFAULT FILE
     && rm /etc/nginx/nginx.conf
 
-# ERB NGINX CONFIG # TO GET HEROKU PORT... 
-COPY ./nginx/nginx.conf.erb /etc/nginx/nginx.conf.erb
-
 # COPY FRONTEND STATIC FILES
 COPY --from=frontbuilder /build/dist /usr/src/backend/staticfiles
 
+# ERB NGINX CONFIG # TO GET HEROKU PORT... 
+COPY ./nginx/nginx.conf.erb /etc/nginx/nginx.conf.erb
+
+# ENV BACKEND_SECRET_KEY=myrandomkey
+# ENV BACKEND_DEBUG=1
+
+# ENV BACKEND_ALLOWED_HOSTS=localhost
+# ENV BACKEND_CORS_ORIGINS=localhost
+# ENV BACKEND_CSRF_TRUSTED_ORIGIN=localhost
+
+# ENV DATABASE_ENGINE=django.db.backends.sqlite3
+# ENV POSTGRES_USER=username
+# ENV POSTGRES_PASSWORD=password
+# ENV POSTGRES_DB=mydatabase
+# ENV POSTGRES_PORT=5432
+# ENV POSTGRES_HOST=postgres
+# ENV PORT=80
+# EXPOSE 80
+
 RUN chmod +x /usr/bin/supervisord
 
+ENTRYPOINT ["/usr/src/backend/entrypoint.prod.sh"]
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
