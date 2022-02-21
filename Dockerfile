@@ -49,7 +49,8 @@ COPY ./nginx/nginx.conf.erb /etc/nginx/nginx.conf.erb
 # ENV PORT=80
 # EXPOSE 80
 
-RUN chmod +x /usr/bin/supervisord
+RUN chmod +x /usr/bin/supervisord \
+    && chmod +x /bin/bash
 
 ENTRYPOINT ["/usr/src/backend/entrypoint.prod.sh"]
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
