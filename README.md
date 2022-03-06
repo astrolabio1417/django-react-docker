@@ -1,4 +1,4 @@
-# Django + DRF + Postgresql | Vite + React + Typescript + Eslint + Prettier
+# Django + DRF + Postgresql | Vite + React + Typescript + Eslint + Prettier | Docker
 
 - SAMPLE anueng gnagawa kue...
 
