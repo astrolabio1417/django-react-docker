@@ -1,9 +1,9 @@
-# Django + DRF + Postgresql | Vite + React + Typescript + Eslint + Prettier | Docker
+# test Boilerplate
 
-- SAMPLE anueng gnagawa kue...
+# ASGI DJANGO | DRF | GUNICORN WITH UVICORN | POSTGRESQL
 
-- GUNICORN + UVICORN
-- NGINX
-- SUPERVISORD
+# VITE TS REACT | Eslint | Prettier
+
+# SUPERVISORD
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new?template=https://github.com/astrolabio1417/django-react-docker)

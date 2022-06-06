@@ -19,7 +19,6 @@ RUN apk update \
     && apk add --no-cache nginx supervisor bash ruby \
     && pip install --upgrade pip \
     && pip install -r requirements.txt \
-    && mkdir -p /var/log/supervisor \
     && mkdir -p /etc/supervisor/conf.d \
     && mkdir -p /usr/src/backend/staticfiles \
     && rm /etc/nginx/nginx.conf
@@ -32,8 +31,9 @@ COPY ./nginx/nginx.conf.erb /etc/nginx/nginx.conf.erb
 # ENV BACKEND_DEBUG=0
 
 # ENV BACKEND_ALLOWED_HOSTS=localhost
-# ENV BACKEND_CORS_ORIGINS=localhost
-# ENV BACKEND_CSRF_TRUSTED_ORIGIN=localhost
+
+# ENV BACKEND_CORS_ORIGINS="http://localhost https://localhost"
+# ENV BACKEND_CSRF_TRUSTED_ORIGIN="http://localhost https://localhost"
 
 # ENV DATABASE_ENGINE=django.db.backends.sqlite3
 # ENV POSTGRES_USER=username
@@ -43,6 +43,8 @@ COPY ./nginx/nginx.conf.erb /etc/nginx/nginx.conf.erb
 # ENV POSTGRES_HOST=postgres
 # ENV PORT=80
 # EXPOSE 80
+
+# ENV DJANGO_SETTINGS_MODULE=backend.settings.prod 
 
 RUN chmod +x /usr/src/backend/entrypoint.prod.sh
 

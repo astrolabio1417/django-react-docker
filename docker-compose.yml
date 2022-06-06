@@ -4,7 +4,7 @@ services:
   backend:
     build: ./backend
     command: python manage.py runserver 0.0.0.0:8000
-    container_name: django
+    container_name: test_django
     volumes:
       - ./backend:/usr/src/backend
     ports:
@@ -15,7 +15,7 @@ services:
       - postgres
   frontend:
     build: ./frontend
-    container_name: react
+    container_name: test_react
     command: yarn run dev
     volumes:
       - ./frontend:/usr/src/frontend
@@ -31,6 +31,7 @@ services:
       CHOKIDAR_USEPOLLING: "true"
   postgres:
     image: postgres:13.0-alpine
+    container_name: test_postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:

@@ -9,7 +9,7 @@
       "value": "enter your secret"
     },
     "BACKEND_DEBUG": {
-      "description": "django debug. 0 = false | 1 = true",
+      "description": "1 = debug mode",
       "value": "0"
     },
     "BACKEND_ALLOWED_HOSTS": {
@@ -27,6 +27,10 @@
     "DATABASE_ENGINE": {
       "description": "django.db.backends.postgresql_psycopg2, django.db.backends.sqlite3 etc...",
       "value": "django.db.backends.sqlite3"
+    },
+    "DJANGO_SETTINGS_MODULE": {
+      "description": "production: backend.settings.prod, development: backend.settings.dev",
+      "value": "backend.settings.prod"
     },
     "POSTGRES_USER": { "value": "username" },
     "POSTGRES_PASSWORD": { "value": "password" },
